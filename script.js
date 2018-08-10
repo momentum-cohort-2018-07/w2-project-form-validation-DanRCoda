@@ -6,8 +6,11 @@ document.getElementById('parking-form').addEventListener('submit', function (eve
         
         if (el.value.trim() === "") {
             
-           el.parentElement.classList.add('input-invalid') &&
-           showError()
+           el.parentElement.classList.add('input-invalid')
+           errorMessage(el.parentElement)
+           
+           
+          
            
         } else {
             el.parentElement.classList.add('input-valid')
@@ -15,39 +18,20 @@ document.getElementById('parking-form').addEventListener('submit', function (eve
     }
 })
 
-function showError() {
+function errorMessage(el) {
     var errorDiv = document.createElement('div')
     errorDiv.classList.add('error-msg')
-    errorDiv.innterText = 'field is required'
+    errorDiv.innerText = 'field is required'
 
-    var field = document.getElementById('input')
-    field.parentElement.appendChild(errorDiv)
-    field.classList.add('error')
+    el.appendChild(errorDiv)
 
 }
 
-// function showValid() {
-//     var validDiv = document.createElement('div')
-//     validDiv.classList.add('input-valid')
-
-//     var field = document.getElementById('name-field')
-//     field.classList.add('input-valid')
-// }
-
-// function showError() {
-//     var errorDiv = document.createElement('div')
-//     errorDiv.classList.add('input-invalid')
-
-//     var field = document.getElementById('car-field')
-//     // field.parentElement.appendChild(errorDiv)
-//     field.classList.add('input-invalid')
-
-// }
-
-// function showValid() {
-//     var validDiv = document.createElement('div')
-//     validDiv.classList.add('input-valid')
-
-//     var field = document.getElementById('car-field')
-//     field.classList.add('input-valid')
-// }
+function clearError(el) {
+    var input = document.getElementsByTagName('div')
+    div.classList.remove('errorDiv')
+    var errorMsg =div.parentElement.querySelector('error-msg')
+    if (errorMsg) {
+        errorMsg.remove(el)
+    }
+}
